@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace myPrinter
 {
 
-    internal class DataGridPrinter
+    public class DataGridPrinter
     {
         private PrintDocument ThePrintDocument;
         //private DataTable TheTable;
