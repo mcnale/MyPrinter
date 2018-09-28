@@ -9,8 +9,7 @@ using System.Windows.Forms;
 
 namespace myPrinter
 {
-
-    public class DataGridPrinter
+    internal class DataGridPrinter
     {
         private PrintDocument ThePrintDocument;
         //private DataTable TheTable;
@@ -79,7 +78,7 @@ namespace myPrinter
                 g.DrawString(RHeader, TheDataGrid.ColumnHeadersDefaultCellStyle.Font, new SolidBrush(Color.Black), new RectangleF(LeftMargin, TopMargin, PageWidth, 80), sformat); // HEADER TEXTLINE
             }
             else
-                headerHeight = 10;
+                headerHeight = 20;
         }
 
         public void DrawHeader(Graphics g)
@@ -89,7 +88,7 @@ namespace myPrinter
             SolidBrush BackBrush = new SolidBrush(TheDataGrid.ColumnHeadersDefaultCellStyle.BackColor);
             Pen TheLinePen = new Pen(Color.Black, 3);
             StringFormat cellformat = new StringFormat();
-            cellformat.Trimming = StringTrimming.EllipsisCharacter;
+            cellformat.Trimming = StringTrimming.Character;
             cellformat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit;
             cellformat.LineAlignment = StringAlignment.Center;
 
@@ -155,7 +154,7 @@ namespace myPrinter
                 SolidBrush AlternatingBackBrush = new SolidBrush(Color.White);
                 Pen TheLinePen = new Pen(Color.Black, 1);
                 StringFormat cellformat = new StringFormat();
-                cellformat.Trimming = StringTrimming.EllipsisCharacter;
+                cellformat.Trimming = StringTrimming.Character;
                 cellformat.FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.LineLimit;
                 cellformat.LineAlignment = StringAlignment.Center;
                 cellformat.Alignment = StringAlignment.Center;
@@ -210,7 +209,7 @@ namespace myPrinter
                             {
                                 try
                                 {
-                                    if (TheDataGrid.Columns[idex].DefaultCellStyle.Format == "N0")
+                                    if (TheDataGrid.Columns[idex].DefaultCellStyle.Format == "NO")
                                         st = Convert.ToInt64(dr.Cells[idex].Value.ToString()).ToString("#,##");
                                     else
                                         st = dr.Cells[idex].Value.ToString();
